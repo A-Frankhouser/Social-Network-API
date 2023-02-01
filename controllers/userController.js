@@ -21,6 +21,7 @@ module.exports = {
             )
             .catch((err) => res.status(500).json(err));
     },
+
     // Create a User
     createUser(req,res) {
         User.create(req.body)
@@ -30,6 +31,7 @@ module.exports = {
             return res.status(500).json(err);
         });
     },
+
     // Update a User
     updateUser(req,res) {
         User.findOneAndUpdate(
@@ -44,6 +46,7 @@ module.exports = {
                 )
                 .catch((err) => res.status(500).json(err));
     },
+
     // Delete a User
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
@@ -55,6 +58,7 @@ module.exports = {
                 .then(() => res.json({ message: 'The User and Thought was deleted :D'}))
                 .catch((err) => res.status(500).json(err));
     },
+
     // Add a Friend
     addFriend(req, res) {
         User.findOneAndUpdate(
@@ -69,5 +73,20 @@ module.exports = {
                 )
                 .catch((err) => res.status(500).json(err));
     },
+
     // Delete a friend
-}
+    deleteUser(req, res) {
+        User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: req.params.friendId } },
+            { new: true }
+        )
+        .then(
+            (user) => 
+                !user
+                    ? res.status(404).json({ message: 'Sorry, no User found with this ID!'})
+                    : res.json(user)
+        )
+        .catch((err) => res.status(505).json(err));
+    },
+};
