@@ -38,4 +38,19 @@ module.exports = {
                 )
                 .catch((err) => res.status(500).json(err));
     },
+
+    // Update a thought.
+    updateThought(req, res) {
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        )
+        .then((user) =>
+            !user
+                ? res.status(404).json({ message: 'Sorry, no thought found with this id:/ ' })
+                : res.json(user)
+            )
+            .catch((err) => res.status(500).json(err));
+    }
 }
