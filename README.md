@@ -2,7 +2,7 @@
 
 ## Description
 This is a social networking API that allows user's to create an account, share their thoughts, and react to other peoples thoughts. You can even add and delete different friends!<br> It uses `express.js`, `MangoDB`, `Mongoose`, and `Moment`. It all comes together to make this wonderful and easy to use backend.<br>
-To see a full video with examples on how to start and use this api please click on this link:<br>
+To see a full video with examples on how to start and use this API please click on this link:<br>
 https://drive.google.com/file/d/1vH4JPtvO0tPviL0nfhGYXrt8TypELZiq/view <br>
 (Note: If you click on the link and it says "Video is still processing. Try again later.", then either download it or give it a bit to finish rendering )
 
